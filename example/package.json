@@ -1,0 +1,26 @@
+{
+    "name": "mirv_test",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "devDependencies": {
+      "@types/express": "^4.17.17",
+      "@types/ws": "^8.5.4",
+      "nodemon": "^2.0.20",
+      "ts-node": "^10.9.1",
+      "typescript": "^4.9.5"
+    },
+    "dependencies": {
+      "big-integer": "^1.6.51",
+      "ws": "^8.12.1",
+      "mirv": "../"
+      
+    },
+    "scripts": {
+      "start": "node dist/index.js",
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "tsc",
+      "dev": "nodemon --exec ts-node src/index.ts",
+      "socket:dev": "nodemon --exec ts-node src/websocket.ts"
+    }
+  }

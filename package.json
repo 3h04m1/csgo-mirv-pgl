@@ -1,11 +1,15 @@
 {
   "name": "csgo-mirv-pgl",
-  "version": "0.1.1",
-  "main": "dist/index.js",
+  "version": "0.1.2",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/3h04m1/csgo-mirv-pgl"
   },
+  "files": [
+    "dist"
+  ],
   "author": "Max Vojtkov<max.vojtkov@gmail.com>",
   "type": "commonjs",
   "types": "dist/index.d.ts",
@@ -22,6 +26,8 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/index.ts",
     "start": "node dist/index.js",
-    "build": "tsc"
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc --module esnext --outDir dist/esm",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs"
   }
 }

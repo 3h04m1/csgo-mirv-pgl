@@ -1,10 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.enrichments = void 0;
-const enrichments_1 = require("./enrichments");
-const useridEnrichment = new enrichments_1.UserIdEnrichment();
-const entitynumEnrichment = new enrichments_1.EntitynumEnrichment();
-exports.enrichments = {
+import { UseridEnrichment, EntitynumEnrichment } from "./enrichments";
+const useridEnrichment = new UseridEnrichment();
+const entitynumEnrichment = new EntitynumEnrichment();
+export const enrichments = {
     player_death: {
         userid: useridEnrichment,
         attacker: useridEnrichment,

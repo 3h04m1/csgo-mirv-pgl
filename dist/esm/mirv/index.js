@@ -1,35 +1,58 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.parseMIRV = void 0;
-const BufferReader_1 = require("../BufferReader");
-const constants_1 = require("../gameEvents/constants");
-const gameEvent_1 = require("../gameEvents/gameEvent");
-function sendCommand(ws, command) {
+import { BufferReader } from "../BufferReader";
+import { enrichments } from "../gameEvents/constants";
+import { GameEventUnserializer } from "../gameEvents/gameEvent";
+/**
+ * @param ws - The websocket where mirv_pgl is listening
+ * @param {string} command - The command to send to the game console
+ * @description
+ * Sends a command to the game Console, it will be executed on the next tick
+ * @example sendCommand(ws, "echo \"Hello World\"");
+ * sendCommand(ws, "demo_pause");
+*/
+export function sendCommand(ws, command) {
     const text = "exec\0" + command + "\0";
     const commandBuffer = Buffer.from(text, "utf8");
     ws.send(new Uint8Array(commandBuffer), { binary: true });
 }
+/**
+ * Registers all the enrichments for the game events
+ * @param ws - The websocket to send commands to the game
+ *
+*/
 function registerEnrichments(ws) {
-    for (const eventName in constants_1.enrichments) {
+    for (const eventName in enrichments) {
         // @ts-ignore
-        for (const keyName in constants_1.enrichments[eventName]) {
+        for (const keyName in enrichments[eventName]) {
             // @ts-ignore
-            const arrEnrich = constants_1.enrichments[eventName][keyName].enrichments;
+            const arrEnrich = enrichments[eventName][keyName].enrichments;
             for (let i = 0; i < arrEnrich.length; ++i) {
                 sendCommand(ws, `mirv_pgl events enrich eventProperty "${arrEnrich[i]}" "${eventName}" "${keyName}"`);
             }
         }
     }
 }
-const gameEventUnserializer = new gameEvent_1.GameEventUnserializer(constants_1.enrichments);
-function parseMIRV(data, ws) {
+const gameEventUnserializer = new GameEventUnserializer(enrichments);
+/**
+ * Returns a Result object with the name of the event and the keys of the event
+ * @param data - The data to parse
+ * @param ws - The websocket to send commands to the game
+ *
+*/
+export function parseMIRV(data, ws) {
     if (!(data instanceof Buffer)) {
         return {
             name: "error",
-            message: "data is not a buffer",
+            keys: {
+                message: "Data is not a buffer",
+            },
         };
     }
-    const bufferReader = new BufferReader_1.BufferReader(Buffer.from(data));
+    const bufferReader = new BufferReader(Buffer.from(data));
+    let res = {
+        name: "",
+        clientTime: undefined,
+        keys: {},
+    };
     try {
         while (!bufferReader.eof()) {
             const cmd = bufferReader.readCString();
@@ -38,6 +61,7 @@ function parseMIRV(data, ws) {
                     {
                         const version = bufferReader.readUInt32LE();
                         console.log("mirv_pgl connected");
+                        sendCommand(ws, 'echo "Connected to websocket"');
                         console.log("version = " + version);
                         if (2 != version)
                             throw "Error: version mismatch";
@@ -54,21 +78,23 @@ function parseMIRV(data, ws) {
                     }
                     break;
                 case "dataStart":
+                    res.name = "dataStart";
                     break;
                 case "dataStop":
+                    res.name = "dataStop";
                     break;
                 case "levelInit":
                     const map = bufferReader.readCString();
-                    return {
-                        name: "levelInit",
-                        keys: {
-                            map: map,
-                        }
+                    res.name = "levelInit";
+                    res.keys = {
+                        map: map,
                     };
+                    break;
                 case "levelShutdown":
+                    res.name = "levelShutdown";
                     break;
                 case "cam":
-                    return {
+                    res = {
                         name: "cam",
                         clientTime: bufferReader.readFloatLE(),
                         keys: {
@@ -79,23 +105,40 @@ function parseMIRV(data, ws) {
                             yRotation: bufferReader.readFloatLE(),
                             zRotation: bufferReader.readFloatLE(),
                             fov: bufferReader.readFloatLE(),
-                        }
+                        },
                     };
+                    break;
                 case "gameEvent":
-                    return gameEventUnserializer.unserialize(bufferReader);
+                    res = gameEventUnserializer.unserialize(bufferReader);
+                    if (res.name === "player_death") {
+                        // still can't understand why this is needed
+                        // otherwise the event player_death is not returned
+                        return {
+                            name: "player_death",
+                            clientTime: res.clientTime,
+                            keys: Object.assign({}, res.keys),
+                        };
+                    }
+                    break;
                 default:
-                    return {
+                    res = {
                         name: "error",
-                        message: "Event not found",
+                        keys: {
+                            message: "Event not found",
+                        },
                     };
             }
         }
     }
     catch (err) {
-        return {
+        res = {
             name: "error",
-            message: `err.toString()`
+            keys: {
+                message: err.toString(),
+            },
         };
     }
+    finally {
+        return res;
+    }
 }
-exports.parseMIRV = parseMIRV;

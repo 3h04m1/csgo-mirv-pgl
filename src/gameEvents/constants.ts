@@ -1,6 +1,6 @@
-import { UserIdEnrichment,EntitynumEnrichment } from "./enrichments";
+import { UseridEnrichment,EntitynumEnrichment } from "./enrichments";
 
-const useridEnrichment = new UserIdEnrichment();
+const useridEnrichment = new UseridEnrichment();
 const entitynumEnrichment = new EntitynumEnrichment();
 
 export const enrichments = {

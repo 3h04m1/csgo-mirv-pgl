@@ -1,40 +1,40 @@
-import { UserIdEnrichment, EntitynumEnrichment } from "./enrichments";
+import { UseridEnrichment, EntitynumEnrichment } from "./enrichments";
 export declare const enrichments: {
     player_death: {
-        userid: UserIdEnrichment;
-        attacker: UserIdEnrichment;
-        assister: UserIdEnrichment;
+        userid: UseridEnrichment;
+        attacker: UseridEnrichment;
+        assister: UseridEnrichment;
     };
     other_death: {
-        attacker: UserIdEnrichment;
+        attacker: UseridEnrichment;
     };
     player_hurt: {
-        userid: UserIdEnrichment;
-        attacker: UserIdEnrichment;
+        userid: UseridEnrichment;
+        attacker: UseridEnrichment;
     };
     item_purchase: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     bomb_beginplant: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     bomb_abortplant: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     bomb_planted: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     bomb_defused: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     bomb_exploded: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     bomb_pickup: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     bomb_dropped: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
         entindex: EntitynumEnrichment;
     };
     defuser_dropped: {
@@ -42,210 +42,210 @@ export declare const enrichments: {
     };
     defuser_pickup: {
         entityid: EntitynumEnrichment;
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     bomb_begindefuse: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     bomb_abortdefuse: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     hostage_follows: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
         hostage: EntitynumEnrichment;
     };
     hostage_hurt: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
         hostage: EntitynumEnrichment;
     };
     hostage_killed: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
         hostage: EntitynumEnrichment;
     };
     hostage_rescued: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
         hostage: EntitynumEnrichment;
     };
     hostage_stops_following: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
         hostage: EntitynumEnrichment;
     };
     hostage_call_for_help: {
         hostage: EntitynumEnrichment;
     };
     vip_escaped: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     player_radio: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     bomb_beep: {
         entindex: EntitynumEnrichment;
     };
     weapon_fire: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     weapon_fire_on_empty: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     grenade_thrown: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     weapon_outofammo: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     weapon_reload: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     weapon_zoom: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     silencer_detach: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     inspect_weapon: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     weapon_zoom_rifle: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     player_spawned: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     item_pickup: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     item_pickup_failed: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     item_remove: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     ammo_pickup: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
         index: EntitynumEnrichment;
     };
     item_equip: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     enter_buyzone: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     exit_buyzone: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     enter_bombzone: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     exit_bombzone: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     enter_rescue_zone: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     exit_rescue_zone: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     silencer_off: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     silencer_on: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     buymenu_open: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     buymenu_close: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     round_end: {
-        winner: UserIdEnrichment;
+        winner: UseridEnrichment;
     };
     grenade_bounce: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     hegrenade_detonate: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     flashbang_detonate: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     smokegrenade_detonate: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     smokegrenade_expired: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     molotov_detonate: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     decoy_detonate: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     decoy_started: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     tagrenade_detonate: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     decoy_firing: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     bullet_impact: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     player_footstep: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     player_jump: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     player_blind: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
         entityid: EntitynumEnrichment;
     };
     player_falldamage: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     door_moving: {
         entityid: EntitynumEnrichment;
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     spec_target_updated: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     player_avenged_teammate: {
-        avenger_id: UserIdEnrichment;
-        avenged_player_id: UserIdEnrichment;
+        avenger_id: UseridEnrichment;
+        avenged_player_id: UseridEnrichment;
     };
     round_mvp: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     player_decal: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     player_reset_vote: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     start_vote: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     player_given_c4: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     player_become_ghost: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     jointeam_failed: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     teamchange_pending: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     ammo_refill: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
     weaponhud_selection: {
-        userid: UserIdEnrichment;
+        userid: UseridEnrichment;
     };
 };

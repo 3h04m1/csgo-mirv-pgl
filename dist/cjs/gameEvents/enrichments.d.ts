@@ -1,14 +1,5 @@
 import { BufferReader } from "../BufferReader";
-export declare class EntitynumEnrichment {
-    enrichments: string[];
-    constructor();
-    unserialize(bufferReader: BufferReader, keyValue: any): {
-        value: any;
-        origin: number[];
-        angles: number[];
-    };
-}
-export declare class UserIdEnrichment {
+export declare class UseridEnrichment {
     enrichments: string[];
     constructor();
     unserialize(bufferReader: BufferReader, keyValue: any): {
@@ -16,5 +7,14 @@ export declare class UserIdEnrichment {
         xuid: string;
         eyeOrigin: number[];
         eyeAngles: number[];
+    };
+}
+export declare class EntitynumEnrichment {
+    enrichments: string[];
+    constructor();
+    unserialize(bufferReader: BufferReader, keyValue: any): {
+        value: any;
+        origin: number[];
+        angles: number[];
     };
 }

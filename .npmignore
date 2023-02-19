@@ -1,3 +1,5 @@
 node_modules/
 dist/
 .git/
+# ignore all files that end with test.ts
+*test.ts

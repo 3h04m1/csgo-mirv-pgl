@@ -1,13 +1,7 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.BufferReader = void 0;
-const big_integer_1 = __importDefault(require("big-integer"));
+import bigInt from "big-integer";
 function findDelim(buffer, idx) {
-    let delim = -1;
-    for (let i = idx; i < buffer.length; ++i) {
+    var delim = -1;
+    for (var i = idx; i < buffer.length; ++i) {
         if (0 == buffer[i]) {
             delim = i;
             break;
@@ -15,7 +9,7 @@ function findDelim(buffer, idx) {
     }
     return delim;
 }
-class BufferReader {
+export class BufferReader {
     constructor(buffer) {
         this.buffer = buffer;
         this.index = 0;
@@ -23,7 +17,7 @@ class BufferReader {
     readBigUInt64LE() {
         const lo = this.readUInt32LE();
         const hi = this.readUInt32LE();
-        return (0, big_integer_1.default)(lo).or((0, big_integer_1.default)(hi).shiftLeft(32));
+        return bigInt(lo).or(bigInt(hi).shiftLeft(32));
     }
     readUInt32LE() {
         const result = this.buffer.readUInt32LE(this.index);
@@ -65,10 +59,9 @@ class BufferReader {
             this.index = delim + 1;
             return result;
         }
-        throw "readCString";
+        throw "BufferReader.readCString";
     }
     eof() {
         return this.index >= this.buffer.length;
     }
 }
-exports.BufferReader = BufferReader;

@@ -15,3 +15,4 @@ export declare class BufferReader {
     readCString(): string;
     eof(): boolean;
 }
+//# sourceMappingURL=BufferReader.d.ts.map

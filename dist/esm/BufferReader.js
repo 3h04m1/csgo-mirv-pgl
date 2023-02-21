@@ -65,3 +65,4 @@ export class BufferReader {
         return this.index >= this.buffer.length;
     }
 }
+//# sourceMappingURL=BufferReader.js.map

@@ -40,3 +40,4 @@ class EntitynumEnrichment {
     }
 }
 exports.EntitynumEnrichment = EntitynumEnrichment;
+//# sourceMappingURL=enrichments.js.map

@@ -35,3 +35,4 @@ export class EntitynumEnrichment {
         };
     }
 }
+//# sourceMappingURL=enrichments.js.map

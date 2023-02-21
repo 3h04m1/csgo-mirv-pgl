@@ -1,29 +1,14 @@
 import { BufferReader } from "../BufferReader";
 import { enrichments } from "../gameEvents/constants";
 import { GameEventUnserializer } from "../gameEvents/gameEvent";
-/**
- * @param ws - The websocket where mirv_pgl is listening
- * @param {string} command - The command to send to the game console
- * @description
- * Sends a command to the game Console, it will be executed on the next tick
- * @example sendCommand(ws, "echo \"Hello World\"");
- * sendCommand(ws, "demo_pause");
-*/
 export function sendCommand(ws, command) {
     const text = "exec\0" + command + "\0";
     const commandBuffer = Buffer.from(text, "utf8");
     ws.send(new Uint8Array(commandBuffer), { binary: true });
 }
-/**
- * Registers all the enrichments for the game events
- * @param ws - The websocket to send commands to the game
- *
-*/
 function registerEnrichments(ws) {
     for (const eventName in enrichments) {
-        // @ts-ignore
         for (const keyName in enrichments[eventName]) {
-            // @ts-ignore
             const arrEnrich = enrichments[eventName][keyName].enrichments;
             for (let i = 0; i < arrEnrich.length; ++i) {
                 sendCommand(ws, `mirv_pgl events enrich eventProperty "${arrEnrich[i]}" "${eventName}" "${keyName}"`);
@@ -32,12 +17,6 @@ function registerEnrichments(ws) {
     }
 }
 const gameEventUnserializer = new GameEventUnserializer(enrichments);
-/**
- * Returns a Result object with the name of the event and the keys of the event
- * @param data - The data to parse
- * @param ws - The websocket to send commands to the game
- *
-*/
 export function parseMIRV(data, ws) {
     if (!(data instanceof Buffer)) {
         return {
@@ -111,8 +90,6 @@ export function parseMIRV(data, ws) {
                 case "gameEvent":
                     res = gameEventUnserializer.unserialize(bufferReader);
                     if (res.name === "player_death") {
-                        // still can't understand why this is needed
-                        // otherwise the event player_death is not returned
                         return {
                             name: "player_death",
                             clientTime: res.clientTime,
@@ -142,3 +119,4 @@ export function parseMIRV(data, ws) {
         return res;
     }
 }
+//# sourceMappingURL=index.js.map

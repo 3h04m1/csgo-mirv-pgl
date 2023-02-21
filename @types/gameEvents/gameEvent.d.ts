@@ -31,3 +31,4 @@ export declare class GameEventUnserializer {
     unserialize(bufferReader: BufferReader): Result;
 }
 export {};
+//# sourceMappingURL=gameEvent.d.ts.map

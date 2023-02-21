@@ -18,3 +18,4 @@ export declare class EntitynumEnrichment {
         angles: number[];
     };
 }
+//# sourceMappingURL=enrichments.d.ts.map

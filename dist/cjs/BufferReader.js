@@ -72,3 +72,4 @@ class BufferReader {
     }
 }
 exports.BufferReader = BufferReader;
+//# sourceMappingURL=BufferReader.js.map

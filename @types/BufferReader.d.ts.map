@@ -1,0 +1,1 @@
+{"version":3,"file":"BufferReader.d.ts","sourceRoot":"","sources":["../src/BufferReader.ts"],"names":[],"mappings":";AAAA,OAAO,MAAM,MAAM,aAAa,CAAC;AAajC,qBAAa,YAAY;IAChB,MAAM,EAAE,MAAM,CAAC;IACf,KAAK,EAAE,MAAM,CAAC;gBACT,MAAM,EAAE,MAAM;IAI1B,eAAe;IAOf,YAAY;IAOZ,WAAW;IAOX,WAAW;IAOX,QAAQ;IAOR,SAAS;IAOT,WAAW;IAIX,WAAW;IAOX,WAAW;IAYX,GAAG;CAGJ"}
